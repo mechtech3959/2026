@@ -1,9 +1,9 @@
 package frc.robot.subsystems.intake;
 
 public interface IntakeIO {
-    default void setControl() {}
+    void setControl(double position);
 
-    default void stop() {}
+    void stop();
 
-    default void getPosition() {}
+    double getPosition();
 }
