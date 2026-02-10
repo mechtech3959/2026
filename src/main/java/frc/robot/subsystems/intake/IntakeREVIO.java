@@ -20,13 +20,13 @@ public class IntakeREVIO implements IntakeIO {
                 .reverseSoftLimitEnabled(true);
 
         intakeMotorConfig.closedLoop
-                    .pid(2.0, 0.0, 0.0)
-                    .feedForward
-                    .kS(0.15)
-                    .kV(0.12)
-                    .kCos(0.2)
-                    // kCosRatio = (Gear Ratio) * (2 * PI) = converts Rotations to Radians
-                    .kCosRatio(9.0 * 2.0 * Math.PI);
+                .pid(2.0, 0.0, 0.0)
+                .feedForward
+                .kS(0.15)
+                .kV(0.12)
+                .kCos(0.2)
+                // kCosRatio = (Gear Ratio) * (2 * PI) = converts Rotations to Radians
+                .kCosRatio(9.0 * 2.0 * Math.PI);
 
         intakeMotorConfig.closedLoop.maxMotion
                 .cruiseVelocity(2000) // 2000 rpm
