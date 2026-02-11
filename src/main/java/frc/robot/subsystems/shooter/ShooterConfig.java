@@ -9,25 +9,25 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 public class ShooterConfig {
-    public TalonFXConfiguration leftShooterConfiguration() {
+    public static TalonFXConfiguration leftShooterConfiguration() {
         return new TalonFXConfiguration().withCurrentLimits(currentLimits).withSlot0(slot0Configs)
                 .withMotionMagic(motionMagic)
                 .withMotorOutput(new MotorOutputConfigs().withInverted(InvertedValue.Clockwise_Positive)
                         .withNeutralMode(NeutralModeValue.Coast));
     }
 
-    public TalonFXConfiguration rightShooterConfiguration() {
+    public static TalonFXConfiguration rightShooterConfiguration() {
         return new TalonFXConfiguration().withCurrentLimits(currentLimits).withSlot0(slot0Configs)
                 .withMotionMagic(motionMagic)
                 .withMotorOutput(new MotorOutputConfigs().withInverted(InvertedValue.CounterClockwise_Positive)
                         .withNeutralMode(NeutralModeValue.Coast));
     }
 
-    CurrentLimitsConfigs currentLimits = new CurrentLimitsConfigs().withStatorCurrentLimit(60)
+    static CurrentLimitsConfigs currentLimits = new CurrentLimitsConfigs().withStatorCurrentLimit(60)
             .withStatorCurrentLimitEnable(true).withSupplyCurrentLimit(40).withSupplyCurrentLimitEnable(true);
 
-    Slot0Configs slot0Configs = new Slot0Configs().withKP(2).withKI(0).withKD(0.1).withKS(0).withKV(0).withKA(0);
-    MotionMagicConfigs motionMagic = new MotionMagicConfigs().withMotionMagicAcceleration(2000)
+    static Slot0Configs slot0Configs = new Slot0Configs().withKP(2).withKI(0).withKD(0.1).withKS(0).withKV(0).withKA(0);
+    static MotionMagicConfigs motionMagic = new MotionMagicConfigs().withMotionMagicAcceleration(2000)
             .withMotionMagicCruiseVelocity(50000).withMotionMagicJerk(4000);
 
 }

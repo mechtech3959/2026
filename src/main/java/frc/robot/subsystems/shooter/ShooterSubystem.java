@@ -38,6 +38,23 @@ public class ShooterSubystem extends SubsystemBase {
             case SHOOTING:
                 break;
         }
+        switch (shooterMode) {
+            case KNOWN_CLOSE:
+                io.setShooterSpeed(targetRPM);
+                break;
+            case KNOWN_FAR:
+                break;
+            case UNKNOWN:
+                io.setShooterSpeed(0);
+                break;
+        }
+    }
+    public void ChangeShooterState(ShooterState newState) {
+        shooterState = newState;
+    }
+        public void ChangeShooterState(ShooterMode newState,double targetRPM) {
+            this.targetRPM = targetRPM;
+            shooterMode = newState;
     }
 
     @Override
