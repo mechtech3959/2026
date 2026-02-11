@@ -26,8 +26,8 @@ public class ShooterConfig {
     static CurrentLimitsConfigs currentLimits = new CurrentLimitsConfigs().withStatorCurrentLimit(60)
             .withStatorCurrentLimitEnable(true).withSupplyCurrentLimit(40).withSupplyCurrentLimitEnable(true);
 
-    static Slot0Configs slot0Configs = new Slot0Configs().withKP(2).withKI(0).withKD(0.1).withKS(0).withKV(0).withKA(0);
-    static MotionMagicConfigs motionMagic = new MotionMagicConfigs().withMotionMagicAcceleration(2000)
-            .withMotionMagicCruiseVelocity(50000).withMotionMagicJerk(4000);
+    static Slot0Configs slot0Configs = new Slot0Configs().withKP(0.5).withKI(0).withKD(0.0001).withKS(0).withKV(0).withKA(0);
+    static MotionMagicConfigs motionMagic = new MotionMagicConfigs().withMotionMagicAcceleration(5)
+            .withMotionMagicCruiseVelocity(5).withMotionMagicJerk(5);
 
 }

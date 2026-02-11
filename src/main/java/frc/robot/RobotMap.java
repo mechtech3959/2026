@@ -9,7 +9,7 @@ public  class RobotMap {
 
     }
     public static class SHOOTER {
-        public static final int LEFT_SHOOTER = 15;
-        public static final int RIGHT_SHOOTER = 16;
+        public static final int LEFT_SHOOTER = 16;
+        public static final int RIGHT_SHOOTER = 15;
     }
 }

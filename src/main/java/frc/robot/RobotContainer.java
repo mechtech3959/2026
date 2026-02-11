@@ -21,10 +21,14 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    driverController.a().onTrue(Commands.runOnce(() -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, 3000)));
-    driverController.b().onTrue(Commands.runOnce(() -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, 200)));
-    driverController.x().onTrue(Commands.runOnce(() -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.UNKNOWN,0)));
-    driverController.y().onTrue(Commands.runOnce(() -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE,-20)));
+    driverController.a().onTrue(Commands.runOnce(
+      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, 5)));
+    driverController.b().onTrue(Commands.runOnce(
+      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, -5)));
+    driverController.x().onTrue(Commands.runOnce(
+      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.UNKNOWN,0)));
+    driverController.y().onTrue(Commands.runOnce(
+      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE,-20)));
   }
 
   public Command getAutonomousCommand() {
