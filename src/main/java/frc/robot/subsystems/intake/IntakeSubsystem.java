@@ -22,8 +22,8 @@ public class IntakeSubsystem extends SubsystemBase {
                 intakeIO.setControl(2);
                 break;
             default:
-                System.out.println("Error in Intake Subsystem: State applied to " +
-                        "non-existing option/undefined error.");
+                System.out.println("Error in Intake Subsystem: State applied to "
+                        + "non-existing option/undefined error.");
                 break;
         }
     }
