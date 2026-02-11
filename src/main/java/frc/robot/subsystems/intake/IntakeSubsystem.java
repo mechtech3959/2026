@@ -28,7 +28,7 @@ public class IntakeSubsystem extends SubsystemBase {
         }
     }
 
-    public void setPosition(IntakeStates state) {
+    public void setIntakeState(IntakeStates state) {
         this.currentIntakeState = state;
     }
 

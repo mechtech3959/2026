@@ -14,15 +14,15 @@ public class SuperStructureSubsystem extends SubsystemBase {
     }
 
     public void setIntakeToStow() {
-        intake.setPosition(IntakeSubsystem.IntakeStates.STOW);
+        intake.setIntakeState(IntakeSubsystem.IntakeStates.STOW);
     }
 
     public void setIntakeToMidStow() {
-        intake.setPosition(IntakeSubsystem.IntakeStates.MID_STOW);
+        intake.setIntakeState(IntakeSubsystem.IntakeStates.MID_STOW);
     }
 
     public void setIntakeToIntake() {
-        intake.setPosition(IntakeSubsystem.IntakeStates.INTAKE);
+        intake.setIntakeState(IntakeSubsystem.IntakeStates.INTAKE);
     }
 
     public void setFeedToRun() {
