@@ -1,35 +1,24 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.intake.IntakeSubsystem;
-import frc.robot.subsystems.intake.feed.FeedSubsystem;
+import frc.robot.subsystems.climber.ClimberSubsystem;
 
 public class SuperStructureSubsystem extends SubsystemBase {
-    private final IntakeSubsystem intake;
-    private final FeedSubsystem feed;
+    private final ClimberSubsystem climber;
 
-    public SuperStructureSubsystem(IntakeSubsystem intake, FeedSubsystem feed) {
-        this.intake = intake;
-        this.feed = feed;
+    public SuperStructureSubsystem(ClimberSubsystem climber) {
+        this.climber = climber;
     }
 
-    public void setIntakeToStow() {
-        intake.setIntakeState(IntakeSubsystem.IntakeStates.STOW);
+    public void setClimberToRetract(){
+        climber.setClimberState(ClimberSubsystem.ClimberStates.RETRACT);
     }
 
-    public void setIntakeToMidStow() {
-        intake.setIntakeState(IntakeSubsystem.IntakeStates.MID_STOW);
+    public void setClimberToClearIntake() {
+        climber.setClimberState(ClimberSubsystem.ClimberStates.CLEAR_INTAKE);
     }
 
-    public void setIntakeToIntake() {
-        intake.setIntakeState(IntakeSubsystem.IntakeStates.INTAKE);
-    }
-
-    public void setFeedToRun() {
-        feed.setFeedState(FeedSubsystem.FeedStates.RUN);
-    }
-
-    public void setFeedToStop() {
-        feed.setFeedState(FeedSubsystem.FeedStates.STOP);
+    public void setClimberToClimb() {
+        climber.setClimberState(ClimberSubsystem.ClimberStates.CLIMB);
     }
 }
