@@ -6,11 +6,17 @@ public class ShooterSubystem extends SubsystemBase {
     // TODO time longest possible time shoot all balls/ averge time to shoot all
     // balls, use this to determine auto shooting times
     public enum ShooterState {
-        STOPPED, IDLE, SPINNING_UP, AT_SPEED, SHOOTING
+        STOPPED,
+        IDLE,
+        SPINNING_UP,
+        AT_SPEED,
+        SHOOTING
     }
 
     public enum ShooterMode {
-        KNOWN_CLOSE, KNOWN_FAR, UNKNOWN
+        KNOWN_CLOSE,
+        KNOWN_FAR,
+        UNKNOWN
     }
 
     private double targetRPM;
@@ -26,35 +32,32 @@ public class ShooterSubystem extends SubsystemBase {
     }
 
     private void handleShooterState() {
-        switch (shooterState) {
-            case STOPPED:
-                break;
-            case IDLE:
-                break;
-            case SPINNING_UP:
-                break;
-            case AT_SPEED:
-                break;
-            case SHOOTING:
-                break;
-        }
+
         switch (shooterMode) {
-            case KNOWN_CLOSE:
-                io.setShooterSpeed(targetRPM);
-                break;
-            case KNOWN_FAR:
-                break;
-            case UNKNOWN:
-                io.setShooterSpeed(0);
-                break;
+            case KNOWN_CLOSE -> io.setShooterSpeed(targetRPM);
+            case KNOWN_FAR -> {
+                // no-op for known far mode (configure if needed)
+            }
+            case UNKNOWN -> io.setShooterSpeed(0);
         }
     }
+
+    public void shooterStatus() {
+        if (!io.isNearTargetSpeed())
+            shooterState = ShooterState.SPINNING_UP;
+        else if (io.isNearTargetSpeed())
+            shooterState = ShooterState.AT_SPEED;
+        else if (io.getShooterSpeed() == 0)
+            shooterState = ShooterState.STOPPED;
+    }
+
     public void ChangeShooterState(ShooterState newState) {
         shooterState = newState;
     }
-        public void ChangeShooterState(ShooterMode newState,double targetRPM) {
-            this.targetRPM = targetRPM;
-            shooterMode = newState;
+
+    public void ChangeShooterState(ShooterMode newState, double targetRPM) {
+        this.targetRPM = targetRPM;
+        shooterMode = newState;
     }
 
     @Override

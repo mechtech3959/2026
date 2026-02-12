@@ -21,14 +21,17 @@ public interface ShooterIO {
     default double getHoodAngle() {
         return 0;
     }
+    default boolean isNearTargetSpeed() {
+        return false;
+    }
+
 
     default void updateInputs(ShooterIOInputs inputs) {
     }
 
     default void stop() {
         setShooterSpeed(0);
-        setHoodAngle(0);
-    }
+     }
 
     default void periodic() {
     }
