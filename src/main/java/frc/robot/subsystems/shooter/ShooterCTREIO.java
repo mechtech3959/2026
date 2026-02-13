@@ -1,6 +1,7 @@
 package frc.robot.subsystems.shooter;
 
 import com.ctre.phoenix6.CANBus;
+import com.ctre.phoenix6.controls.NeutralOut;
 import com.ctre.phoenix6.controls.StrictFollower;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -11,6 +12,7 @@ public class ShooterCTREIO implements ShooterIO {
     private final TalonFX leftShooter;
     private final TalonFX rightShooter;
     private final VelocityVoltage velocityVoltage = new VelocityVoltage(0);
+    private final NeutralOut neutralOut = new NeutralOut();
     CANBus tempBus = new CANBus("rio");
 
     private double target = 0;
@@ -32,6 +34,12 @@ public class ShooterCTREIO implements ShooterIO {
     }
 
     @Override
+    public void setShooterNeutral() {
+        rightShooter.setControl(neutralOut);
+        target = 0;
+    }
+
+    @Override
     public double getShooterSpeed() {
         return rightShooter.getVelocity().getValueAsDouble();
 
@@ -39,7 +47,7 @@ public class ShooterCTREIO implements ShooterIO {
 
     @Override
     public boolean isNearTargetSpeed() {
-        return rightShooter.getVelocity().isNear(target, 50); // Adjust the tolerance as needed
+        return rightShooter.getVelocity().isNear(target, 25); // Adjust the tolerance as needed
 
     }
 }

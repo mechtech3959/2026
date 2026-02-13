@@ -10,6 +10,8 @@ public interface ShooterIO {
 
     default void setShooterSpeed(double speed) {
     }
+    default void setShooterNeutral() {
+    }
 
     default void setHoodAngle(double angle) {
     }
@@ -21,17 +23,17 @@ public interface ShooterIO {
     default double getHoodAngle() {
         return 0;
     }
+
     default boolean isNearTargetSpeed() {
         return false;
     }
 
+    default void stop() {
+        setShooterSpeed(0);
+    }
 
     default void updateInputs(ShooterIOInputs inputs) {
     }
-
-    default void stop() {
-        setShooterSpeed(0);
-     }
 
     default void periodic() {
     }
