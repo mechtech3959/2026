@@ -1,6 +1,9 @@
 package frc.robot.subsystems.shooter;
 
+import org.littletonrobotics.junction.Logger;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 
 public class ShooterSubystem extends SubsystemBase {
     // TODO time longest possible time shoot all balls/ averge time to shoot all
@@ -18,6 +21,7 @@ public class ShooterSubystem extends SubsystemBase {
         KNOWN_FAR,
         UNKNOWN
     }
+    
 
     private double targetRPM;
     private double targetAngle;
@@ -63,6 +67,9 @@ public class ShooterSubystem extends SubsystemBase {
     @Override
     public void periodic() {
         io.periodic();
+        Logger.recordOutput("here", true);
+        Logger.recordOutput("speed", io.getShooterSpeed());
+        Logger.recordOutput("isAtSpeed",io.isNearTargetSpeed());
         handleShooterState();
     }
 

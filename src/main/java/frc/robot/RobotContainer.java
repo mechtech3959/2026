@@ -22,13 +22,13 @@ public class RobotContainer {
 
   private void configureBindings() {
     driverController.a().onTrue(Commands.runOnce(
-      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, 5)));
-    driverController.b().onTrue(Commands.runOnce(
       () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, -5)));
+    driverController.b().onTrue(Commands.runOnce(
+      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE, -10)));
     driverController.x().onTrue(Commands.runOnce(
       () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.UNKNOWN,0)));
     driverController.y().onTrue(Commands.runOnce(
-      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE,-20)));
+      () -> shooterSubsystem.ChangeShooterState(ShooterSubystem.ShooterMode.KNOWN_CLOSE,-100)));
   }
 
   public Command getAutonomousCommand() {
