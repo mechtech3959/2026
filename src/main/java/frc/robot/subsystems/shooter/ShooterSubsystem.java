@@ -29,7 +29,7 @@ public class ShooterSubsystem extends SubsystemBase {
     private ShooterState shooterState = ShooterState.IDLE;
     private ShooterMode shooterMode = ShooterMode.UNKNOWN;
 
-    public ShooterSubystem(ShooterIO io) {
+    public ShooterSubsystem(ShooterIO io) {
         this.io = io;
 
     }
