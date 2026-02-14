@@ -47,14 +47,15 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void shooterStatus() {
-        if (shooterMode == ShooterMode.REST)
+        if (shooterMode == ShooterMode.REST) {
             shooterState = ShooterState.IDLE;
-        if (!io.isNearTargetSpeed())
-            shooterState = ShooterState.SPINNING_UP;
-        else if (io.isNearTargetSpeed())
-            shooterState = ShooterState.AT_SPEED;
-        else if (io.getShooterSpeed() == 0)
+        } else if (io.getShooterSpeed() == 0) {
             shooterState = ShooterState.STOPPED;
+        } else if (!io.isNearTargetSpeed()) {
+            shooterState = ShooterState.SPINNING_UP;
+        } else {
+            shooterState = ShooterState.AT_SPEED;
+        }
     }
 
     public void ChangeShooterState(ShooterState newState) {
