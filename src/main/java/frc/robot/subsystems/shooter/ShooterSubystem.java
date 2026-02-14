@@ -5,7 +5,7 @@ import org.littletonrobotics.junction.Logger;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSubsystem extends SubsystemBase {
-    // TODO time longest possible time shoot all balls/ averge time to shoot all
+    // TODO time longest possible time to shoot all balls / average time to shoot all
     // balls, use this to determine auto shooting times
     public enum ShooterState {
         STOPPED,
