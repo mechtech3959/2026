@@ -47,7 +47,5 @@ public class RobotContainer {
         () -> shooterSubsystem.ChangeShooterState(ShooterSubsystem.ShooterMode.KNOWN_CLOSE, -100)));
   }
 
-  // public Command getAutonomousCommand() {
-  // return //autoChooser.selectedCommandScheduler();
-  // }
+ 
 }

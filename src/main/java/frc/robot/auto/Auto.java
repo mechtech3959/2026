@@ -1,6 +1,5 @@
 package frc.robot.auto;
 
-import choreo.Choreo;
 import choreo.auto.AutoChooser;
 import choreo.auto.AutoFactory;
 import choreo.auto.AutoRoutine;
@@ -16,32 +15,12 @@ public class Auto {
     private AutoFactory autoFactory;
     private final AutoChooser autoChooser;
 
-    private final Choreo.TrajectoryCache cache;
-
     public Auto(DrivetrainSubsystem drivetrain) {
         this.autoChooser = new AutoChooser();
 
         this.drivetrain = drivetrain;
 
-        // Initialize trajectory cache - preloads trajectories at robot startup
-        // This prevents delays when loading trajectories during auto
-        cache = new Choreo.TrajectoryCache();
-
-        // Preload all trajectories you'll use in autonomous
-        cache.loadTrajectory("Test");
-        // Add more as needed:
-        // cache.loadTrajectory("Path2");
-        // cache.loadTrajectory("Path3");
-
-        this.autoFactory = drivetrain.makeAutoFactory(); /*
-                                                          * new AutoFactory(
-                                                          * drivetrain::getPose,
-                                                          * drivetrain::resetPose,
-                                                          * drivetrain::stageTrajectory,
-                                                          * true, // Trajectories are relative to starting pose
-                                                          * drivetrain);
-                                                          */
-
+        this.autoFactory = drivetrain.makeAutoFactory();
     }
 
     public void configure() {
