@@ -267,7 +267,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     public Rotation2d getHeading() {
         return swerveInputs.Pose.getRotation();
     }
-
+/* 
     @Override
     public void simulationPeriodic() {
         Logger.recordOutput("sim", true);
@@ -291,5 +291,5 @@ public class DrivetrainSubsystem extends SubsystemBase {
         Logger.processInputs("Drive/Module  2", moduleInputs[2]);
         // Send to dashboard
         Logger.processInputs("Drive/Module 3", moduleInputs[3]);
-    }
+    }*/
 }
