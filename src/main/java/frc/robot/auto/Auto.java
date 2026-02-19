@@ -24,6 +24,7 @@ public class Auto {
     }
 
     public void configure() {
+        
         autoChooser.addRoutine("Test", this::testRoutine);
         SmartDashboard.putData("Auto Chooser", autoChooser);
         RobotModeTriggers.autonomous().whileTrue(autoChooser.selectedCommandScheduler());

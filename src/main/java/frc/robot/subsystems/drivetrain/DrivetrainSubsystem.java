@@ -46,13 +46,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private final SwerveRequest.FieldCentricFacingAngle headingDrive = new SwerveRequest.FieldCentricFacingAngle()
             .withHeadingPID(3, 0, 0)
             .withDriveRequestType(SwerveModule.DriveRequestType.OpenLoopVoltage);
+    private final SwerveRequest.ApplyFieldSpeeds pathRequest = new SwerveRequest.ApplyFieldSpeeds();
+
     private final PIDController autoXController = new PIDController(7, 0, 0);
     private final PIDController autoYController = new PIDController(7, 0, 0);
     private final PIDController autoHeadingController = new PIDController(7, 0, 0);
-    private SwerveSample trajectorySample = null;
     private final PIDController autoDriveController = new PIDController(3.0, 0, 0.1);
-
-    private final SwerveRequest.ApplyFieldSpeeds pathRequest = new SwerveRequest.ApplyFieldSpeeds();
+    private SwerveSample trajectorySample = null;
 
     private SwerveState currentDriveState = SwerveState.TeliOp;
     private CommandXboxController controller;
@@ -83,14 +83,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
         io.registerDrivetrainTelemetry(swerveInputs);
 
-        autoHeadingController.enableContinuousInput(-Math.PI, Math.PI);
     }
 
     @Override
     public void periodic() {
 
         io.updateDrivetrainData(swerveInputs);
-        Logger.processInputs(getName() + "/Swerve", swerveInputs);
+        Logger.processInputs(getName() + "/", swerveInputs);
         // teliopDrive();
         // headingDrive();
         applyState();
@@ -187,6 +186,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void followTrajectory(SwerveSample sample) {
+        autoHeadingController.enableContinuousInput(-Math.PI, Math.PI);
+
         // Get the current pose of the robot
         Pose2d pose = io.getPose();
         ChassisSpeeds speed = sample.getChassisSpeeds();
