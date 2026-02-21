@@ -38,4 +38,9 @@ public class ClimberSubsystem extends SubsystemBase {
         CLEAR_INTAKE,
         CLIMB
     }
+
+    @Override
+    public void periodic() {
+        applyState();
+    }
 }
