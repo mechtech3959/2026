@@ -15,7 +15,7 @@ public class ClimberConfiguration {
                 .reverseSoftLimit(0.1)
                 .reverseSoftLimitEnabled(true);
 
-        climberMotorConfig.closedLoop.pid(2.0, 0.0, 0.0)
+        climberMotorConfig.closedLoop.pid(15.0, 0.0, 0.0)
                 .feedForward.kS(0.15)
                 .kV(0.12)
                 .kCos(0.2)

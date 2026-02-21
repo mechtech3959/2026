@@ -9,7 +9,7 @@ public class ClimberSubsystem extends SubsystemBase {
         this.climberIO = climberIO;
     }
 
-    private ClimberStates currentClimberState = ClimberStates.RETRACT;
+    private ClimberStates currentClimberState = ClimberStates.HOME;
 
     public void setClimberState(ClimberStates state){
         this.currentClimberState = state;
@@ -17,14 +17,14 @@ public class ClimberSubsystem extends SubsystemBase {
 
     private void applyState(){
         switch (currentClimberState){
-            case RETRACT:
+            case HOME:
                 climberIO.setPosition(0);
                 break;
             case CLEAR_INTAKE:
-                climberIO.setPosition(0.2);
+                climberIO.setPosition(0.6);
                 break;
             case CLIMB:
-                climberIO.setPosition(1);
+                climberIO.climb();
                 break;
             default:
                 System.out.println("Error in Climber Subsystem: State applied to "
@@ -34,7 +34,7 @@ public class ClimberSubsystem extends SubsystemBase {
     }
 
     public enum ClimberStates {
-        RETRACT,
+        HOME,
         CLEAR_INTAKE,
         CLIMB
     }
